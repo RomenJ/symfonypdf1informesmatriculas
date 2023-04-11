@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Colegio index{% endblock %}
+
+{% block body %}
+    <h1>Colegio index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Foundationdate</th>
+
+                    <th>Alumnos matrciulados</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for colegio in colegios %}
+            <tr>
+                <td>{{ colegio.id }}</td>
+                <td>{{ colegio.name }}</td>
+                <td>{{ colegio.address }}</td>
+                <td>{{ colegio.foundationdate ? colegio.foundationdate|date('d-m-Y') : '' }}</td>
+               <td>
+           <ul>
+            {% for alumno in colegio.alumnos %}
+
+              <li>
+                
+    {#    <a class="btn-primary" href="{{ path('app_comentario_temantario', {'id': tema.id }) }}">Comentar en             #}
+              {{ alumno.name}},{{ alumno.surname}} Since: {{alumno.datereg ? alumno.datereg|date('d-m-Y') : '' }} </a>
+
+                 {# <a class="btn-primary" href="{{ path('app_comentario_edit', {'id': tema.id }) }}">Comentar en             
+              {{ tema.title }} </a> #}
+
+            </li>
+
+              {% if not loop.last %}, {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+              
+              
+                <td>
+                    <a href="{{ path('app_colegio_show', {'id': colegio.id}) }}">show</a>
+                    <a href="{{ path('app_colegio_edit', {'id': colegio.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_colegio_new') }}">Create new</a>
+{% endblock %}

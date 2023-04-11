@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Alumno index{% endblock %}
+
+{% block body %}
+    <h1>Alumno index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Colegio</th>
+                <th>Datereg</th>
+                
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for alumno in alumnos %}
+            <tr>
+                <td>{{ alumno.id }}</td>
+                <td>{{ alumno.name }}</td>
+                <td>{{ alumno.surname }}</td>
+                <td>{{ alumno.colegio }}</td>
+                <td>{{ alumno.datereg ? alumno.datereg|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a  class="btn1" href="{{ path('app_alumno_show', {'id': alumno.id}) }}">Show</a>
+                    <a class="btn2" href="{{ path('app_alumno_edit', {'id': alumno.id}) }}">Edit</a>
+                    <a class="btn3" href="{{ path('app_alumno_pdfgen', {'id': alumno.id}) }}"> Repport pdf</a>
+              
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_alumno_new') }}">Create new</a>
+{% endblock %}

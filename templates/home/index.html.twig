@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Registro de Matrícula de centros educativos</h1>
+     <img src="/images/sf.png" style="width:100px;margin-left:0%"> 
+     <br/>
+     <br/>
+    <p> Font: https://www.binaryboxtuts.com/php-tutorials/generating-pdf-from-html-in-symfony-6/</p> 
+         This friendly message is coming from:
+    <ul>       
+        <li>Try the pdf button <a class="btn3" href="{{ path('app_pdf_generator')}}"> Try me¡</a></li>
+
+        <li>Try the crud of class alumno <a class="btn3" href="{{ path('app_alumno_index')}}"> Index de alumnos</a></li>
+<li>Try the crud of class colegio <a class="btn3" href="{{ path('app_colegio_index')}}"> Index de colegios</a></li>
+
+   
+    </ul>
+</div>
+{% endblock %}
